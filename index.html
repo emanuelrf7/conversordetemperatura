@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section class="main-content">
+            <div class="content-1">
+                <h1>Conversor de Temperatura</h1>
+                <label for="itexto">Digite a temperatura:</label>
+                <input type="text" name="texto" id="itexto" placeholder="Temperatura">
+                <label for="botaoC">Converta para Celcius:</label>
+                <input type="button" value="Converter" onclick="calcularCelcius()">
+                <label for="botaoC">Converta para Fahrenheit:</label>
+                <input type="button" value="Converter" onclick="calcularFahrenheit()">
+                <label for="ilimpar">Limpar resultado:</label>
+                <input type="button" value="Limpar" onclick="limpar()">
+                <div id="resultado"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>® DESENVOLVIDO POR <strong><a href="https://emanuelrf7.github.io/portfolio/" rel="external" target="_blank">EMANUEL ROSA FRANCO</a></p>
+    </footer>
+    <script>
+        function calcularCelcius() {
+            let temperatura = document.querySelector('input#itexto')
+            let novaTemp = Number(temperatura.value)
+            let calculo = (novaTemp - 32) * 5/9
+            let novoElemento = document.createElement('p')
+            novoElemento.innerText = `${novaTemp}º Fahrenheit em graus Celcius são: ${calculo.toFixed(2)}ºC.`
+            
+            let elemento = document.querySelector('div#resultado')
+            elemento.appendChild(novoElemento)
+        }
+
+        function calcularFahrenheit() {
+            let temperatura = document.querySelector('input#itexto')
+            let novaTemp = Number(temperatura.value)
+            let calculo = (novaTemp * 9/5) + 32
+            let novoElemento = document.createElement('p')
+            novoElemento.innerText = `${novaTemp}º Celcius em graus Fahrenheit são: ${calculo.toFixed(2)}ºF.`
+            
+            let elemento = document.querySelector('div#resultado')
+            elemento.appendChild(novoElemento)
+        }
+
+        function limpar() {
+            document.getElementById('resultado').innerHTML = ''            
+        }
+    </script>
+</body>
+</html>
